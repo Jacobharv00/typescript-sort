@@ -1,2 +1,2 @@
 # typescript-sort
-Sorting algorithm using typescript 
+Abstract Sorter Class using bubble sort algorithm. 
