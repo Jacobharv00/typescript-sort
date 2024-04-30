@@ -4,17 +4,25 @@ interface Sortable {
   swap: (leftIndex: number, rightIndex: number) => void;
 }
 
-export class Sorter {
-  constructor(public collection: Sortable) {}
+/**
+ * Abstract class for sorting.
+ *
+ * This class provides a skeleton method `sort` to perform bubble sort operations
+ * on elements defined by subclass implementations of `compare` and `swap` methods.
+ */
+export abstract class Sorter {
+  abstract compare(leftIndex: number, rightIndex: number): boolean;
+  abstract swap(leftIndex: number, rightIndex: number): void;
+  abstract length: number;
 
-  // Bubble Sort
+  /** Bubble sort */
   sort(): void {
-    const { length } = this.collection;
+    const { length } = this;
 
     for (let i = 0; i < length; i++) {
       for (let j = 0; j < length - i - 1; j++) {
-        if (this.collection.compare(j, j + 1)) {
-          this.collection.swap(j, j + 1);
+        if (this.compare(j, j + 1)) {
+          this.swap(j, j + 1);
         }
       }
     }
